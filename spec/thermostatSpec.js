@@ -14,18 +14,27 @@ describe('Thermostat', function () {
     thermostat.up();
     expect(thermostat.getCurrentTemperature()).toEqual(21);
   });
-  it('descreases the temperature', function (){
+  it('descreases the temperature', function () {
     thermostat.down();
     expect(thermostat.getCurrentTemperature()).toEqual(19);
-  })
+  });
   it('has a minimum temperature of 10 degrees', function () {
     for (var i = 0; i < 11; i++) {
-      thermostat.down()
+      thermostat.down();
     }
     expect(thermostat.getCurrentTemperature()).toEqual(10);
-  })
-  it('has a power saving mode by default', function(){
+  });
+  it('has a power saving mode by default', function () {
     expect(thermostat.isPowerSavingModeOn()).toBe(true);
-
+  });
+  it('can switch PSM off', function () {
+    thermostat.switchPowerSavingModeOff();
+    expect(thermostat.isPowerSavingModeOn()).toBe(false);
+  })
+  it('can switch PSM back on', function () {
+    thermostat.switchPowerSavingModeOff();
+    expect(thermostat.isPowerSavingModeOn()).toBe(false);
+    thermostat.switchPowerSavingModeOn();
+    expect(thermostat.isPowerSavingModeOn()).toBe(true);
   })
 });
