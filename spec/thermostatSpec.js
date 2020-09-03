@@ -36,5 +36,16 @@ describe('Thermostat', function () {
     expect(thermostat.isPowerSavingModeOn()).toBe(false);
     thermostat.switchPowerSavingModeOn();
     expect(thermostat.isPowerSavingModeOn()).toBe(true);
+  });
+  describe('when PSM is on', function(){
+    it('has a max temp of 25 degrees', function(){
+      for (var i = 0; i < 6; i++){
+        thermostat.up();
+      }
+    expect(thermostat.getCurrentTemperature()).toEqual(25);
+    
+   
+    })
   })
+
 });
